@@ -16,6 +16,7 @@ app.use(express.static('public'));
 consign()
   .include('app/routes')
   .then('config/dbConnection.js')
+  .then('app/models')
   .into(app)
 
 // Exporta o objeto app.
