@@ -2,6 +2,8 @@
 var express = require('express')
 // Carrega o modulo do consign
 var consign = require('consign')
+// Carrega o modulo do body-parser.
+var bodyParser = require('body-parser')
 
 // Armazena a instancia do Express na variavel app.
 var app = express()
@@ -11,6 +13,9 @@ app.set('view engine', 'ejs')
 app.set('views', './app/views')
 // Especifia o diretorio com conteudo estatico
 app.use(express.static('public'));
+
+// Cria um middleware para que o bodyParser recupere os dados via post no formato json.
+app.use(bodyParser.urlencoded({extended : true}))
 
 // Realiza o autoload das rotas e da conexao do bd para dentro da app.
 consign()
