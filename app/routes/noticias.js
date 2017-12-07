@@ -4,9 +4,9 @@ module.exports = function(app) {
     // Carrega a funcao de conexao com bd exportada via autoload.
     var connection = app.config.dbConnection()
     // Carrega o model de noticias.
-    var noticiasModel = app.app.models.noticiasModel
+    var noticiasModel = new app.app.models.NoticiasDAO(connection)
 
-    noticiasModel.getNoticias(connection, function(error, result){
+    noticiasModel.getNoticias(function(error, result){
         res.render('noticias/noticias', {noticias : result})
       })
     })
